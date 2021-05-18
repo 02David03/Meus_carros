@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "126103290106",
+    "project_id": "meus-carros-68006",
+    "storage_bucket": "meus-carros-68006.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:126103290106:android:214421308e4929c0d90943",
+        "android_client_info": {
+          "package_name": "com.example.meus_carros"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "126103290106-7qulk2a2bksaqqf5ovqmpkhcggdolqrv.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.meus_carros",
+            "certificate_hash": "0347ef675b2ff7d8d1b60b40b8d9b350db2e9550"
+          }
+        },
+        {
+          "client_id": "126103290106-grqcn1r1bc16fofuopdbcgkefeuflrur.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDgBvTaIwKbbgZwojHtA9NUKvac3PgmfmY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "126103290106-grqcn1r1bc16fofuopdbcgkefeuflrur.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
