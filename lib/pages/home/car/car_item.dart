@@ -95,9 +95,6 @@ class _CarItemState extends State<CarItem> {
       })
       );},
   );
-  Widget buildProgressIndicator() => Container(
-    child: Center(
-      child: CircularProgressIndicator(),
-    ),
-  );
+  Widget buildProgressIndicator() =>
+      Container();
 }

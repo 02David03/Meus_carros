@@ -10,7 +10,7 @@ class HomeAppBar extends PreferredSize  {
       preferredSize: Size.fromHeight(250),
       child: Container(
         child: Container(
-          height: 110,
+          height: 130,
           padding: const EdgeInsets.symmetric(horizontal: 20),
           decoration: BoxDecoration(
               gradient: Gradients.linearGrey
@@ -19,40 +19,43 @@ class HomeAppBar extends PreferredSize  {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text.rich(
-                      TextSpan(
-                          text:'Seja bem vindo ',
-                          style: TextStyle(
-                            fontSize: 17,
-                            color: Colors.white
-                          ),
-                          children:[
-                            TextSpan(
-                                text: user.displayName,
-                                style: TextStyle(
-                                  fontSize: 17,
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.bold
-                                )
-                            )
-                          ]
-                      )
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(top: 8),
-                    child: Text(
-                      'Email: ' + user.email,
-                      style: TextStyle(
-                        fontSize: 14,
-                        color: Colors.white
+              Container(
+                width: 250,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text.rich(
+                        TextSpan(
+                            text:'Seja bem vindo(a) ',
+                            style: TextStyle(
+                              fontSize: 16,
+                              color: Colors.white
+                            ),
+                            children:[
+                              TextSpan(
+                                  text: user.displayName,
+                                  style: TextStyle(
+                                    fontSize: 16,
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold
+                                  )
+                              )
+                            ]
+                        )
                     ),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 8),
+                      child: Text(
+                        'Email: ' + user.email,
+                        style: TextStyle(
+                          fontSize: 14,
+                          color: Colors.white
+                      ),
+                      ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
               Container(
                 width: 80,
