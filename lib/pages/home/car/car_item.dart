@@ -1,5 +1,6 @@
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
+import 'package:meus_carros/pages/details/car_details.dart';
 
 class CarItem extends StatefulWidget {
   final dynamic car;
@@ -25,13 +26,16 @@ class _CarItemState extends State<CarItem> {
     getImage();
   }
   Widget build(BuildContext context) {
-    return Container(
+    return isImageLoaded ?buildCar() : buildProgressIndicator();
+  }
+  Widget buildCar() =>GestureDetector(
+    child: Container(
       decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(10),
-        border: Border.fromBorderSide(BorderSide(
-          color: Colors.grey
-        ))
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(10),
+          border: Border.fromBorderSide(BorderSide(
+              color: Colors.grey
+          ))
       ),
       child: Padding(
         padding: const EdgeInsets.all(8.0),
@@ -40,7 +44,10 @@ class _CarItemState extends State<CarItem> {
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
               Container(
-                child: isImageLoaded ? buildAvatarImage() : buildIcon()
+                  child: CircleAvatar(
+                      radius: 35,
+                      backgroundImage: NetworkImage(url)
+                  )
               ),
               VerticalDivider(
                 thickness: 2,
@@ -53,15 +60,15 @@ class _CarItemState extends State<CarItem> {
                     child: Text(
                       widget.car['modelo'],
                       style: TextStyle(
-                        fontSize: 17,
-                        fontWeight: FontWeight.bold
+                          fontSize: 17,
+                          fontWeight: FontWeight.bold
                       ),
                     ),
                   ),
                   Text(
                     widget.car['anoFabricacao'],
                     style: TextStyle(
-                      fontStyle: FontStyle.italic
+                        fontStyle: FontStyle.italic
                     ),
                   )
                 ],
@@ -70,13 +77,27 @@ class _CarItemState extends State<CarItem> {
           ),
         ),
       ),
-    );
-  }
-  Widget buildAvatarImage() => CircleAvatar(
-      radius: 35,
-      backgroundImage: NetworkImage(url)
+    ),
+    onTap: (){
+      Navigator.push(context, PageRouteBuilder(
+          opaque: false,
+          pageBuilder: (BuildContext context, _, __){
+            return CarDetails(car: widget.car, url: url,);
+          },transitionsBuilder: (context, animation, secondaryAnimation, child) {
+        var begin = Offset(0.0, 1.0);
+        var end = Offset.zero;
+        var curve = Curves.ease;
+        var tween = Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
+        return SlideTransition(
+          position: animation.drive(tween),
+          child: child,
+        );
+      })
+      );},
   );
-  Widget buildIcon() => Center(
-    child: Icon(Icons.car_repair),
+  Widget buildProgressIndicator() => Container(
+    child: Center(
+      child: CircularProgressIndicator(),
+    ),
   );
 }
