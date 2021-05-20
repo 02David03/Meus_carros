@@ -10,7 +10,7 @@ class HomeAppBar extends PreferredSize  {
       preferredSize: Size.fromHeight(250),
       child: Container(
         child: Container(
-          height: 115,
+          height: 110,
           padding: const EdgeInsets.symmetric(horizontal: 20),
           decoration: BoxDecoration(
               gradient: Gradients.linearGrey
@@ -27,14 +27,14 @@ class HomeAppBar extends PreferredSize  {
                       TextSpan(
                           text:'Seja bem vindo ',
                           style: TextStyle(
-                            fontSize: 15,
+                            fontSize: 17,
                             color: Colors.white
                           ),
                           children:[
                             TextSpan(
                                 text: user.displayName,
                                 style: TextStyle(
-                                  fontSize: 15,
+                                  fontSize: 17,
                                   color: Colors.white,
                                   fontWeight: FontWeight.bold
                                 )
@@ -47,7 +47,7 @@ class HomeAppBar extends PreferredSize  {
                     child: Text(
                       'Email: ' + user.email,
                       style: TextStyle(
-                        fontSize: 12,
+                        fontSize: 14,
                         color: Colors.white
                     ),
                     ),
@@ -55,8 +55,8 @@ class HomeAppBar extends PreferredSize  {
                 ],
               ),
               Container(
-                width: 75,
-                height: 75,
+                width: 80,
+                height: 80,
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(10),
                     image: DecorationImage(
@@ -66,7 +66,7 @@ class HomeAppBar extends PreferredSize  {
                     )
                 ),
                 child: Padding(
-                  padding: const EdgeInsets.only(top: 52, left: 53),
+                  padding: const EdgeInsets.only(top: 55, left: 57),
                   child: IconButton(
                     icon: Icon(Icons.logout, color: Colors.white),
                     onPressed: (){

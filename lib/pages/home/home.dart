@@ -1,8 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:meus_carros/pages/home/app_bar/app_bar.dart';
+import 'package:meus_carros/pages/home/car/car_item.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -10,27 +10,33 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+  final db = FirebaseFirestore.instance;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: HomeAppBar(FirebaseAuth.instance.currentUser, context),
-        body:Container()
+        body: StreamBuilder<QuerySnapshot>(
+          stream: db.collection('cars').snapshots(),
+          builder: (context, snapashot) {
+            if (!snapashot.hasData) {
+              return Center(
+                child: CircularProgressIndicator(),
+              );
+            } else {
+              return Padding(
+                padding: const EdgeInsets.only(top: 24),
+                child: ListView(
+                  children: snapashot.data.docs.map((doc){
+                    return Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 6, horizontal: 12),
+                      child: CarItem(car: doc),
+                    );
+                  }).toList(),
+                ),
+              );
+            }
+          },
+        )
     );
   }
 }
-
-/*Future upload() async {
-  await Firebase.initializeApp();
-
-  final ref = FirebaseFirestore.instance.collection('cars').doc();
-  await ref.set(
-      {
-        'anoFabricacao' : '2000',
-        'anoModelo' : '1995',
-        'modelo' : 'gol',
-        'marca' : 'chefrolet',
-        'placa' : 'suna-5411',
-        'foto' : 'https://static.kbb.com.br/pkw/t/VOLKSWAGEN/GOL/2000/5HA.JPG'
-      }
-      );
-} */
