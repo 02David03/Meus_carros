@@ -5,7 +5,7 @@ class Gradients {
   begin: Alignment.topRight,
   end: Alignment.bottomLeft,
   colors: [
-    Color(0xFF347086),
-    Color(0xFF322D2D)
+    Color(0xFF3F8EAC),
+    Color(0xFF494242)
   ],);
 }

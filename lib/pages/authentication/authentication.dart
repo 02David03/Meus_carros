@@ -21,7 +21,7 @@ class _AuthenticationState extends State<Authentication> {
           builder: (context, snapshot) {
             final provider = Provider.of<GoogleSignInProvider>(context);
 
-            if (provider.isSignedIn) {
+            if (provider.isSigningIn) {
               return buildLoading();
             } else if (snapshot.hasData) {
               return Home();

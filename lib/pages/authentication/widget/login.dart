@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:meus_carros/pages/authentication/widget/google_signup_button.dart';
 import 'package:meus_carros/styles/gradients.dart';
 
@@ -13,15 +14,18 @@ class Login extends StatelessWidget {
         children: [
           Spacer(),
           Align(
-            alignment: Alignment.centerLeft,
+            alignment: Alignment.center,
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20),
               child: Text(
-                'Meus\n    Carros',
-                style: TextStyle(
-                    color: Color(0xCCFFFFFF),
-                    fontSize: 35,
-                    fontWeight: FontWeight.bold
+                'Meus\n     Carros',
+                style: GoogleFonts.teko(
+                    textStyle:TextStyle(
+                      color: Color(0xEBFFFFFF),
+                      fontSize: 60,
+                      fontStyle: FontStyle.italic,
+                      fontWeight: FontWeight.bold,
+                    )
                 ),
               ),
             ),

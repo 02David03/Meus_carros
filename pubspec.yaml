@@ -24,6 +24,8 @@ dependencies:
   provider: ^5.0.0
   # icon of google
   font_awesome_flutter: ^9.0.0
+  #fonts
+  google_fonts: ^2.1.0
 
 dev_dependencies:
   flutter_test:

@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:meus_carros/styles/appBarColor.dart';
 
 class CarDetails extends StatefulWidget {
   final dynamic car;
@@ -17,7 +18,7 @@ class _CarDetailsState extends State<CarDetails> {
       appBar: AppBar(
         title: Text(widget.car['modelo']),
         centerTitle: true,
-        backgroundColor: Colors.blueGrey,
+        backgroundColor: AppBarColor(widget.car['modelo']).Colors(),
       ),
       body:SingleChildScrollView(
         child: Container(

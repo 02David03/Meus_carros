@@ -4,21 +4,21 @@ import 'package:google_sign_in/google_sign_in.dart';
 
 class GoogleSignInProvider extends ChangeNotifier {
   final googleSignIn = GoogleSignIn();
-  bool _isSignedIn = false;
+  bool _isSigningIn = false;
 
-  bool get isSignedIn => _isSignedIn;
+  bool get isSigningIn => _isSigningIn;
 
-  set isSignedIn(bool value) {
-    _isSignedIn = value;
+  set isSigningIn(bool value) {
+    _isSigningIn = value;
     notifyListeners();
   }
 
   Future login() async{
-    isSignedIn = true;
+    isSigningIn = true;
 
     final user = await googleSignIn.signIn();
     if(user == null) {
-      isSignedIn = false;
+      isSigningIn = false;
       return;
     } else {
       final googleAuth = await user.authentication;
@@ -30,12 +30,14 @@ class GoogleSignInProvider extends ChangeNotifier {
 
       await FirebaseAuth.instance.signInWithCredential(credential);
 
-      isSignedIn = false;
+      isSigningIn = false;
     }
   }
 
   void logout() async {
+    isSigningIn = true;
     await googleSignIn.disconnect();
+    isSigningIn = false;
     FirebaseAuth.instance.signOut();
   }
 }
