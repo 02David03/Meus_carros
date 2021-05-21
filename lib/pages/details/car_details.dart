@@ -1,10 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:meus_carros/model/car.dart';
 import 'package:meus_carros/styles/appBarColor.dart';
 
 class CarDetails extends StatefulWidget {
-  final dynamic car;
-  final dynamic url;
+  final Car car;
+  final String url;
   const CarDetails({Key key, this.car, this.url}) : super(key: key);
   @override
   _CarDetailsState createState() => _CarDetailsState();
@@ -16,9 +17,9 @@ class _CarDetailsState extends State<CarDetails> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.car['modelo']),
+        title: Text(widget.car.modelo),
         centerTitle: true,
-        backgroundColor: AppBarColor(widget.car['modelo']).Colors(),
+        backgroundColor: AppBarColor(widget.car.modelo).Colors(),
       ),
       body:SingleChildScrollView(
         child: Container(
@@ -36,23 +37,23 @@ class _CarDetailsState extends State<CarDetails> {
                 ),
                 ListTile(
                   title: Text('Modelo'),
-                  subtitle: Text(widget.car['modelo']),
+                  subtitle: Text(widget.car.modelo),
                 ),
                 ListTile(
                   title: Text('Marca'),
-                  subtitle: Text(widget.car['marca']),
+                  subtitle: Text(widget.car.marca),
                 ),
                 ListTile(
                   title: Text('Ano de Fabricação'),
-                  subtitle: Text(widget.car['anoFabricacao']),
+                  subtitle: Text(widget.car.anoFabricacao),
                 ),
                 ListTile(
                   title: Text('Ano do Modelo'),
-                  subtitle: Text(widget.car['anoModelo']),
+                  subtitle: Text(widget.car.anoModelo),
                 ),
                 ListTile(
                   title: Text('Placa'),
-                  subtitle: Text(widget.car['placa']),
+                  subtitle: Text(widget.car.placa),
                 )
               ],
             ),

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:meus_carros/pages/authentication/provider/google_sign_in.dart';
-import 'package:provider/provider.dart';
+import 'package:meus_carros/controller/google_signup_button_controller.dart';
 
 class GoogleSignupButton extends StatelessWidget {
+  var controller = GoogleSignupButtonController();
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -26,9 +26,7 @@ class GoogleSignupButton extends StatelessWidget {
         ),
         icon: FaIcon(FontAwesomeIcons.google, color: Colors.blueAccent),
         onPressed: (){
-          final provider =
-              Provider.of<GoogleSignInProvider>(context, listen: false);
-          provider.login();
+          controller.login(context);
         },
       ),
     );

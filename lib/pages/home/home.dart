@@ -1,6 +1,6 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:meus_carros/controller/home_controller.dart';
+import 'package:meus_carros/model/car.dart';
 import 'package:meus_carros/pages/home/app_bar/app_bar.dart';
 import 'package:meus_carros/pages/home/car/car_item.dart';
 
@@ -10,13 +10,13 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  final db = FirebaseFirestore.instance;
+  var controller = HomeController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: HomeAppBar(FirebaseAuth.instance.currentUser, context),
-        body: StreamBuilder<QuerySnapshot>(
-          stream: db.collection('cars').snapshots(),
+        appBar: HomeAppBar(),
+        body: StreamBuilder<List<Car>>(
+          stream: controller.getCars(),
           builder: (context, snapashot) {
             if (!snapashot.hasData) {
               return Center(
@@ -26,10 +26,10 @@ class _HomeState extends State<Home> {
               return Padding(
                 padding: const EdgeInsets.only(top: 24),
                 child: ListView(
-                  children: snapashot.data.docs.map((doc){
+                  children: snapashot.data.map((car){
                     return Padding(
                       padding: const EdgeInsets.symmetric(vertical: 6, horizontal: 12),
-                      child: CarItem(car: doc),
+                      child: CarItem(car: car),
                     );
                   }).toList(),
                 ),
